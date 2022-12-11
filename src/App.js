@@ -11,6 +11,8 @@ import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
+import { promiseDataSmall, promiseDataLarge } from "./api/data";
+
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 function App() {
@@ -18,6 +20,9 @@ function App() {
   const colorMode = React.useContext(ColorModeContext);
 
   const [lang, setLang] = React.useState('en');
+  const [pronunciationDataLarge, setPronunciationDataLarge] = React.useState([['字', 'zi6']]);
+  const [char, setChar] = React.useState('字');
+  const [roma, setRoma] = React.useState('zi6');
 
   const handleLangChange = (event) => {
     setLang(event.target.value);
@@ -26,6 +31,33 @@ function App() {
   const getLocaleText = (i18nText, language) => {
     return language in i18nText? i18nText[language] : i18nText["en"];
   };
+
+  useEffect(() => {
+    (async () => {
+      // const [pronunciationDataSmall, pronunciationDataLarge] =
+      //   await Promise.all([promiseDataSmall, promiseDataLarge]);
+      // setPronunciationDataSmall(pronunciationDataSmall);
+      const pronunciationDataLarge0 = await promiseDataLarge;
+      setPronunciationDataLarge(pronunciationDataLarge0);
+    })();
+  }, []);
+
+  useEffect(() => {
+    const boardEvent = window.setInterval(refreshBoard, 5000);
+    return () => {
+      window.clearInterval(boardEvent);
+    };
+  });
+
+  const refreshBoard = () => {
+    const idx = Math.floor(Math.random() * pronunciationDataLarge.length);
+    const [nextchar, nextroma] = pronunciationDataLarge[idx];
+    setChar(nextchar);
+    setRoma('...');
+    window.setTimeout(() => {
+      setRoma(nextroma);
+    }, 3500);
+  }
 
   return (
     <div>
@@ -70,7 +102,7 @@ function App() {
             Display flashcards with Chinese characters and Jyutping with your comfortable speed.
         </Typography>
 
-        <FlashCard char={'字'} roma={'zi6'}></FlashCard>
+        <FlashCard char={char} roma={roma}></FlashCard>
 
 
         {/* Search Module */}
@@ -93,7 +125,7 @@ function App() {
 }
 
 export default function AppWithColorToggler() {
-  const [mode, setMode] = React.useState('light');
+  const [mode, setMode] = React.useState('dark');
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
