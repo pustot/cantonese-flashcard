@@ -23,6 +23,7 @@ function App() {
   const [pronunciationDataLarge, setPronunciationDataLarge] = React.useState([['字', 'zi6']]);
   const [char, setChar] = React.useState('字');
   const [roma, setRoma] = React.useState('zi6');
+  const [isInitialized, setIsInitialized] = React.useState(false);
 
   const handleLangChange = (event) => {
     setLang(event.target.value);
@@ -39,15 +40,16 @@ function App() {
       // setPronunciationDataSmall(pronunciationDataSmall);
       const pronunciationDataLarge0 = await promiseDataLarge;
       setPronunciationDataLarge(pronunciationDataLarge0);
+      setIsInitialized(true);
     })();
   }, []);
 
   useEffect(() => {
-    const boardEvent = window.setInterval(refreshBoard, 5000);
+    const boardEvent = window.setInterval(refreshBoard, 4000);
     return () => {
       window.clearInterval(boardEvent);
     };
-  });
+  }, [isInitialized]);
 
   const refreshBoard = () => {
     const idx = Math.floor(Math.random() * pronunciationDataLarge.length);
@@ -56,7 +58,7 @@ function App() {
     setRoma('...');
     window.setTimeout(() => {
       setRoma(nextroma);
-    }, 3500);
+    }, 2000);
   }
 
   return (
