@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cantonese-flashcard/static/css/main.763e00fd.css",
+    "main.js": "/cantonese-flashcard/static/js/main.075d7b59.js",
+    "index.html": "/cantonese-flashcard/index.html",
+    "main.763e00fd.css.map": "/cantonese-flashcard/static/css/main.763e00fd.css.map",
+    "main.075d7b59.js.map": "/cantonese-flashcard/static/js/main.075d7b59.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.763e00fd.css",
+    "static/js/main.075d7b59.js"
+  ]
+}
