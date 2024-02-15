@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cantonese-flashcard/static/css/main.763e00fd.css",
-    "main.js": "/cantonese-flashcard/static/js/main.075d7b59.js",
-    "index.html": "/cantonese-flashcard/index.html",
-    "main.763e00fd.css.map": "/cantonese-flashcard/static/css/main.763e00fd.css.map",
-    "main.075d7b59.js.map": "/cantonese-flashcard/static/js/main.075d7b59.js.map"
+    "main.css": "/static/css/main.763e00fd.css",
+    "main.js": "/static/js/main.3d54fda3.js",
+    "index.html": "/index.html",
+    "main.763e00fd.css.map": "/static/css/main.763e00fd.css.map",
+    "main.3d54fda3.js.map": "/static/js/main.3d54fda3.js.map"
   },
   "entrypoints": [
     "static/css/main.763e00fd.css",
-    "static/js/main.075d7b59.js"
+    "static/js/main.3d54fda3.js"
   ]
 }
