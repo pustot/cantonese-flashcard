@@ -1,6 +1,6 @@
 # cantonese-flashcard
 
-https://cantonese-flashcard.twaqngu.com/
+https://cantonese-flashcard.pustot.com/
 
 Display flashcards with Chinese characters and Jyutping with your comfortable speed.
 
